@@ -8,10 +8,25 @@ public class Account {
     private String customerPhoneNumber;
 
     public Account() {
+        this("56789",2.5,"default","default","default");
         System.out.println("Empty constructor called");
     }
 
+    public Account(String number, double balance, String customerName,String customerEmail, String customerPhoneNumber){
+        System.out.println("Account constructor with parameters called");
+        this.number = number;
+        this.balance = balance;
+        this.customerName = customerName;
+        this.customerEmail = customerEmail;
+        this.customerPhoneNumber = customerPhoneNumber;
+    }
 
+    public Account(String customerName, String customerEmail, String customerPhoneNumber) {
+        this("9999",100.00,customerName,customerEmail,customerPhoneNumber);
+        this.customerName = customerName;
+        this.customerEmail = customerEmail;
+        this.customerPhoneNumber = customerPhoneNumber;
+    }
 
     public void deposit(double depositAmount) {
         this.balance += depositAmount;
