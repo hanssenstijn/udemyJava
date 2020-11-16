@@ -2,7 +2,7 @@ package com.company;
 
 public class PC {
     private Case theCase;
-    private  Monitor monitor;
+    private Monitor monitor;
     private Motherboard motherboard;
 
     public PC(Case theCase, Monitor monitor, Motherboard motherboard) {
@@ -11,15 +11,12 @@ public class PC {
         this.motherboard = motherboard;
     }
 
-    private Case getTheCase() {
-        return theCase;
+    public void powerUp() {
+        theCase.pressPowerButton();
+        drawLogo();
     }
 
-    private Monitor getMonitor() {
-        return monitor;
-    }
-
-    private Motherboard getMotherboard() {
-        return motherboard;
+    private void drawLogo() {
+        monitor.drawPixelAt(1200, 50, "yellow");
     }
 }
