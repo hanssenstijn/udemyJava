@@ -1,47 +1,103 @@
 package com.company;
 
-class Movie {
+class Car4 {
+    private boolean engine;
+    private int cylinders;
     private String name;
+    private int wheels;
 
-    public Movie(String name) {
+    public Car4(int cylinders, String name) {
+        this.cylinders = cylinders;
         this.name = name;
+        this.wheels = 4;
+        this.engine = true;
     }
 
-    public String plot() {
-        return "No plot here";
+    public int getCylinders() {
+        return cylinders;
     }
 
     public String getName() {
         return name;
     }
-}
 
-class Jaws extends Movie {
-    public Jaws() {
-        super("Jaws");
+    public String startEninge() {
+        return "Car -> startEngine()";
     }
 
-    public String plot() {
-        return "A shark eats people";
+    public String accelerate() {
+        return "Car -> accelerate()";
+    }
+
+    public String brake() {
+        return "Car -> brake()";
     }
 }
 
-class IndependenceDay extends Movie {
-    public IndependenceDay() {
-        super("Independence day");
+class Mitsubish extends Car4 {
+    public Mitsubish(int cylinders, String name) {
+        super(cylinders, name);
     }
 
     @Override
-    public String plot() {
-        return "Aliens attempt to take over";
+    public String startEninge() {
+        return "Mitsubish -> startEngine()";
     }
-}
 
-class Forgetable extends  Movie {
-    public Forgetable() {
-        super("Forgetable");
+    @Override
+    public String accelerate() {
+        return "Mitsubish -> accelerate()";
     }
-    // No plot method
+
+    @Override
+    public String brake() {
+        return "Mitsubish -> brake()";
+    }
+
+
+    class Movie {
+        private String name;
+
+        public Movie(String name) {
+            this.name = name;
+        }
+
+        public String plot() {
+            return "No plot here";
+        }
+
+        public String getName() {
+            return name;
+        }
+    }
+
+    class Jaws extends Movie {
+        public Jaws() {
+            super("Jaws");
+        }
+
+        public String plot() {
+            return "A shark eats people";
+        }
+    }
+
+    class IndependenceDay extends Movie {
+        public IndependenceDay() {
+            super("Independence day");
+        }
+
+        @Override
+        public String plot() {
+            return "Aliens attempt to take over";
+        }
+    }
+
+    class Forgetable extends Movie {
+        public Forgetable() {
+            super("Forgetable");
+        }
+        // No plot method
+    }
 }
 
 public class Main {
@@ -109,9 +165,9 @@ public class Main {
         System.out.println("height= " + wall.getHeight());
         System.out.println("area= " + wall.getArea());
 
-        Animal animal = new Animal("tim",1,1,5,5);
+        Animal animal = new Animal("tim", 1, 1, 5, 5);
 
-        Dog dog = new Dog("York",8,20,2,4,1,20,"Long");
+        Dog dog = new Dog("York", 8, 20, 2, 4, 1, 20, "Long");
         dog.eat();
         dog.walk();
         dog.run();
@@ -120,15 +176,15 @@ public class Main {
         outlander.steer(45);
         outlander.accelerate(30);
 
-        Dimensions dimensions = new Dimensions(20,20,5);
-        Case theCase = new Case("22","Dell","240",dimensions);
+        Dimensions dimensions = new Dimensions(20, 20, 5);
+        Case theCase = new Case("22", "Dell", "240", dimensions);
 
 
-        Monitor theMonitor = new Monitor("27 inch","Acer",27,new Resolution(2540,1440));
+        Monitor theMonitor = new Monitor("27 inch", "Acer", 27, new Resolution(2540, 1440));
 
-        Motherboard theMotherboard = new Motherboard("BJ","Asus",5,7,"V2.4");
+        Motherboard theMotherboard = new Motherboard("BJ", "Asus", 5, 7, "V2.4");
 
-        PC thePC = new PC(theCase,theMonitor,theMotherboard);
+        PC thePC = new PC(theCase, theMonitor, theMotherboard);
         thePC.powerUp();
 
         Wall2 wall1 = new Wall2("west");
@@ -136,13 +192,13 @@ public class Main {
         Wall2 wall3 = new Wall2("north");
         Wall2 wall4 = new Wall2("south");
 
-        Ceiling ceiling = new Ceiling(12,55);
+        Ceiling ceiling = new Ceiling(12, 55);
 
-        Bed bed = new Bed("Modern",4,3,2,1);
+        Bed bed = new Bed("Modern", 4, 3, 2, 1);
 
         Lamp lamp = new Lamp("Classic", false, 75);
 
-        Bedroom bedRoom = new Bedroom("Tim",wall1,wall2,wall3,wall4,ceiling,bed,lamp);
+        Bedroom bedRoom = new Bedroom("Tim", wall1, wall2, wall3, wall4, ceiling, bed, lamp);
         bedRoom.makeBed();
         bedRoom.getLamp().turnOn();
 
@@ -159,29 +215,30 @@ public class Main {
         player.loseHealth(damage);
         System.out.println("Remaining health = " + player.healthRemaining());
 
-        EnhancedPlayer enhancedPlayer = new EnhancedPlayer("Tim",50,"Sword");
-        System.out.println("Initial health is " +  enhancedPlayer.getHitPoints());
+        EnhancedPlayer enhancedPlayer = new EnhancedPlayer("Tim", 50, "Sword");
+        System.out.println("Initial health is " + enhancedPlayer.getHitPoints());
 
-        Printer printer = new Printer(50,true);
+        Printer printer = new Printer(50, true);
         System.out.println("Initial page count " + printer.getPagePrinted());
         int pagesPrinted = printer.printPages(4);
         System.out.println("Pages printed was " + pagesPrinted + " new total print count for printer = " + printer.getPagePrinted());
 
-        for (int i=1; i<10;i++) {
-            Movie movie = randomMovie();
-            System.out.println("Movie # " + i + " ; " + movie.getName() + " \n " + "Plot: " + movie.plot() + " \n");
-        }
-    }
+        Car4 car4 = new Car4(8,"Base care");
+        System.out.println(car4.startEninge());
+        System.out.println(car4.accelerate());
+        System.out.println(car4.brake());
 
-    public static Movie randomMovie() {
-        int randomNumber = (int) (Math.random() * 2 + 1);
-        System.out.println("Random number generated was " + randomNumber);
-        switch (randomNumber) {
-            case 1:
-                return new Jaws();
-            case 2:
-                return new IndependenceDay();
-        }
-        return null;
+        Mitsubish mitsubish = new Mitsubish(6,"Outlander VRW 4WD");
+        System.out.println(mitsubish.startEninge());
+        System.out.println(mitsubish.accelerate());
+        System.out.println(mitsubish.brake());
+
+        Hamburger hamburger = new Hamburger("basic","sausage",3.56,"white");
+        double price = hamburger.itemizeHamburger();
+        hamburger.addHamburgerAddition1("Tomato",0.27);
+        hamburger.addHamburgerAddition2("Lettuce",0.75);
+        hamburger.addHamburgerAddition3("cheese",1.15);
+        System.out.println("Total burger price is $" + hamburger.itemizeHamburger());
+
     }
 }
