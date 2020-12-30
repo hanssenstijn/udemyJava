@@ -223,22 +223,28 @@ public class Main {
         int pagesPrinted = printer.printPages(4);
         System.out.println("Pages printed was " + pagesPrinted + " new total print count for printer = " + printer.getPagePrinted());
 
-        Car4 car4 = new Car4(8,"Base care");
+        Car4 car4 = new Car4(8, "Base care");
         System.out.println(car4.startEninge());
         System.out.println(car4.accelerate());
         System.out.println(car4.brake());
 
-        Mitsubish mitsubish = new Mitsubish(6,"Outlander VRW 4WD");
+        Mitsubish mitsubish = new Mitsubish(6, "Outlander VRW 4WD");
         System.out.println(mitsubish.startEninge());
         System.out.println(mitsubish.accelerate());
         System.out.println(mitsubish.brake());
 
-        Hamburger hamburger = new Hamburger("basic","sausage",3.56,"white");
+        Hamburger hamburger = new Hamburger("basic", "sausage", 3.56, "white");
         double price = hamburger.itemizeHamburger();
-        hamburger.addHamburgerAddition1("Tomato",0.27);
-        hamburger.addHamburgerAddition2("Lettuce",0.75);
-        hamburger.addHamburgerAddition3("cheese",1.15);
+        hamburger.addHamburgerAddition1("Tomato", 0.27);
+        hamburger.addHamburgerAddition2("Lettuce", 0.75);
+        hamburger.addHamburgerAddition3("cheese", 1.15);
         System.out.println("Total burger price is $" + hamburger.itemizeHamburger());
+
+        HealthyBurger healthyBurger = new HealthyBurger("Bacon", 5.67);
+        healthyBurger.itemizeHamburger();
+        healthyBurger.addHealthAddtion1("Egg",6.54);
+        healthyBurger.itemizeHamburger();
+
 
     }
 }
