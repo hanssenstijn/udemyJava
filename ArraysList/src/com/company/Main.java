@@ -17,6 +17,11 @@ public class Main {
         }
         System.out.println("The average is " + getAverage(myIntegers));
 
+        int[] array = {1, 5, 3, 7, 11, 9, 15};
+        System.out.println("Current Array = " + Arrays.toString(array));
+
+        reverse(array);
+        System.out.println("Reversed array = " + Arrays.toString(array));
     }
 
     public static int[] getIntegers(int number) {
@@ -32,9 +37,9 @@ public class Main {
     private static int findMind(int[] array) {
         int min = Integer.MAX_VALUE;
 
-        for(int i=0; i<array.length; i++) {
+        for (int i = 0; i < array.length; i++) {
             int value = array[i];
-            if(value < min) {
+            if (value < min) {
                 min = value;
             }
         }
@@ -60,21 +65,32 @@ public class Main {
 //        for (int i = 0; i < array.length; i++) {
 //            sortedArray[i] = array[i];
 //        }
-        int[] sortedArray = Arrays.copyOf(array,array.length);
+        int[] sortedArray = Arrays.copyOf(array, array.length);
         boolean flag = true;
         int temp;
-        while(flag) {
+        while (flag) {
             flag = false;
-            for(int i=0;i<sortedArray.length-1;i++){
-                if(sortedArray[i] < sortedArray[i+1]) {
+            for (int i = 0; i < sortedArray.length - 1; i++) {
+                if (sortedArray[i] < sortedArray[i + 1]) {
                     temp = sortedArray[i];
-                    sortedArray[i] = sortedArray[i+1];
-                    sortedArray[i+1] = temp;
+                    sortedArray[i] = sortedArray[i + 1];
+                    sortedArray[i + 1] = temp;
                     flag = true;
                 }
             }
         }
         return sortedArray;
+    }
+
+    private static void reverse(int[] array) {
+        int maxIndex = array.length - 1;
+        int halfLength = array.length / 2;
+
+        for (int i = 0; i < halfLength; i++) {
+            int temp = array[i];
+            array[i] = array[maxIndex - i];
+            array[maxIndex - i] = temp;
+        }
     }
 //        int[] myVariable;
 //        myVariable = new int[10];
