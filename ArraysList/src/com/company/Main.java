@@ -6,22 +6,98 @@ import java.util.Scanner;
 public class Main {
 
     private static Scanner scanner = new Scanner(System.in);
+    private static GroceryList groceryList = new GroceryList();
 
     public static void main(String[] args) {
-        int[] myIntegers = getIntegers(5);
-        int[] sorted = sortIntegers(myIntegers);
-        printArray(sorted);
+        boolean quit = false;
+        int choice = 0;
+        printInstructions();
+        while (quit) {
+            System.out.println("Enter your choice ");
+            choice = scanner.nextInt();
+            scanner.nextLine();
 
-        for (int i = 0; i < myIntegers.length; i++) {
-            System.out.println("Element " + i + ", typed value was " + myIntegers[i]);
+            switch (choice) {
+                case 0:
+                    printInstructions();
+                    break;
+                case 1:
+                    groceryList.printGroceryList();
+                    break;
+                case 2:
+                    addItem();
+                    break;
+                case 3:
+                    modifyItem();
+                    break;
+                case 4:
+                    removeItem();
+                    break;
+                case 5:
+                    searchForItem();
+                    break;
+                case 6:
+                    quit = true;
+                    break;
+            }
         }
-        System.out.println("The average is " + getAverage(myIntegers));
+//        int[] myIntegers = getIntegers(5);
+//        int[] sorted = sortIntegers(myIntegers);
+//        printArray(sorted);
+//
+//        for (int i = 0; i < myIntegers.length; i++) {
+//            System.out.println("Element " + i + ", typed value was " + myIntegers[i]);
+//        }
+//        System.out.println("The average is " + getAverage(myIntegers));
+//
+//        int[] array = {1, 5, 3, 7, 11, 9, 15};
+//        System.out.println("Current Array = " + Arrays.toString(array));
+//
+//        reverse(array);
+//        System.out.println("Reversed array = " + Arrays.toString(array));
+    }
 
-        int[] array = {1, 5, 3, 7, 11, 9, 15};
-        System.out.println("Current Array = " + Arrays.toString(array));
+    public static void printInstructions() {
+        System.out.println("\n Press ");
+        System.out.println("\t 0 - Print choice options");
+        System.out.println("\t 1 - Print list grocery items");
+        System.out.println("\t 2 - Add line to list");
+        System.out.println("\t 3 - Modify item list");
+        System.out.println("\t 4 - Remove item list");
+        System.out.println("\t 5 - Search item list");
+        System.out.println("\t 6 - Quit application");
+    }
 
-        reverse(array);
-        System.out.println("Reversed array = " + Arrays.toString(array));
+    public static void addItem() {
+        System.out.print("Please enter the grocery item: ");
+        groceryList.addGroceryItem(scanner.nextLine());
+    }
+
+    public static void modifyItem() {
+        System.out.print("Enter item number: ");
+        int itemNo = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("Enter replacement item: ");
+        String newItem = scanner.nextLine();
+        groceryList.modifyGroceryItem(itemNo, newItem);
+
+    }
+
+    public static void removeItem() {
+        System.out.print("Enter item number: ");
+        int itemNo = scanner.nextInt();
+        scanner.nextLine();
+        groceryList.removeGroceryItem(itemNo);
+    }
+
+    public static void searchForItem() {
+        System.out.print("Item to search for: ");
+        String searchItem = scanner.nextLine();
+        if(groceryList.findItem(searchItem )!= null) {
+            System.out.println("Found " + searchItem + " in our grocery");
+        } else {
+                System.out.println(searchItem + " is not in the list");
+            }
     }
 
     public static int[] getIntegers(int number) {
