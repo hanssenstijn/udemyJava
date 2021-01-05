@@ -1,7 +1,24 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
+
+class IntClass {
+    private int myValue;
+
+    public IntClass(int myValue) {
+        this.myValue = myValue;
+    }
+
+    public int getMyValue() {
+        return myValue;
+    }
+
+    public void setMyValue(int myValue) {
+        this.myValue = myValue;
+    }
+}
 
 
 public class Main {
@@ -11,127 +28,170 @@ public class Main {
 
     public static void main(String[] args) {
 
-        boolean quit = false;
-        startPhone();
-        printActions();
-        while (quit) {
-            System.out.println("\nEnter action: (6 to show available actions");
-            int action = scanner.nextInt();
-            scanner.nextLine();
+        String[] strArray = new String[10];
+        int[] intArray = new int[10];
 
-            switch (action) {
-                case 0:
-                    System.out.println("\n Shutting down...");
-                    quit = true;
-                    break;
+        ArrayList<String> strArrayList = new ArrayList<String>();
+        strArrayList.add("Tim");
 
-                case 1:
-                    mobilePhone.printContacts();
-                    break;
+//        ArrayList<int> intArrayList = new ArrayList<int>();
+        ArrayList<IntClass> intClassArrayList = new ArrayList<IntClass>();
+        intClassArrayList.add(new IntClass(54));
+        Integer integer = new Integer(54);
+        Double doubleValue = new Double(12.125);
 
-                case 2:
-                    addnewContact();
-                    break;
-
-                case 3:
-                    updateContact();
-                    break;
-
-                case 4:
-                    removeContact();
-                    break;
-
-                case 5:
-                    queryContact();
-                    break;
-
-                case 6:
-                    printActions();
-                    break;
-            }
-
-        }
-    }
-
-    private static void addnewContact() {
-        System.out.println("Enter new contact name: ");
-        String name = scanner.nextLine();
-        System.out.println("Ender phone number: ");
-        String phone = scanner.nextLine();
-        Contact newContact = Contact.createContact(name, phone);
-        if (mobilePhone.addNewContact(newContact)) {
-            System.out.println("New contact added: " + name + ", phone = " + phone);
-        } else {
-            System.out.println("Cannot add, " + name + " already on file");
-        }
-    }
-
-    private static void updateContact() {
-        System.out.println("Enter existing contact name: ");
-        String name = scanner.nextLine();
-        Contact existingContactRecord = mobilePhone.queryContact(name);
-        if(existingContactRecord == null) {
-            System.out.println("Contact not found.");
-            return;
+        ArrayList<Integer> intArrrayList = new ArrayList<Integer>();
+        for( int i=0; i<10; i++) {
+            intArrrayList.add(Integer.valueOf(i));
         }
 
-        System.out.println("Enter new contact name: ");
-        String newName = scanner.nextLine();
-        System.out.println("Enter new contact phone number: ");
-        String newNumber = scanner.nextLine();
-        Contact newContact = Contact.createContact(newName,newNumber);
-        if(mobilePhone.updateContact(existingContactRecord,newContact)) {
-            System.out.println("Successfully updated record");
-        } else {
-            System.out.println("Error updating recoding");
+        for( int i=0; i<10; i++) {
+            System.out.println(i + " --> " + intArrrayList.get(i).intValue());
         }
-    }
 
-    private static void removeContact() {
-        System.out.println("Enter existing contact name: ");
-        String name = scanner.nextLine();
-        Contact existingContactRecord = mobilePhone.queryContact(name);
-        if (existingContactRecord == null) {
-            System.out.println("Contact not found.");
-            return;
+        Integer myIntValue = Integer.valueOf(56);
+        int myInt = myIntValue.intValue();
+
+        ArrayList<Double> myDoubleValues = new ArrayList<Double>();
+        for(double dbl=0.0; dbl<10.0; dbl += 0.5){
+            myDoubleValues.add(Double.valueOf(dbl));
         }
-        if(mobilePhone.removeContact(existingContactRecord)) {
-            System.out.println("Successfully deleted");
-        } else {
-            System.out.println("Error deleting contact");
+
+        for(int i=0; i<myDoubleValues.size(); i++) {
+            double value = myDoubleValues.get(i).doubleValue();
+            System.out.println(i + " --> " + value);
         }
-    }
 
-    private static void queryContact() {
-        System.out.println("Enter existing contact name: ");
-        String name = scanner.nextLine();
-        Contact existingContactRecord = mobilePhone.queryContact(name);
-        if (existingContactRecord == null) {
-            System.out.println("Contact not found.");
-            return;
-        }
-        System.out.println("Name: " + existingContactRecord.getName() + " phone number is " + existingContactRecord.getPhoneNumber());
-    }
 
-    private static void printContacts() {
-        mobilePhone.printContacts();
-    }
 
-    private static void startPhone() {
-        System.out.println("Starting phone...");
-    }
 
-    private static void printActions() {
-        System.out.println("\n Available actions: \npress");
-        System.out.println("0 - to shutdown\n" +
-                "1 - to print contacts\n" +
-                "2 - to add a new contact\n" +
-                "3 - to update existing an existing contact\n" +
-                "4 - to remove an existing contact\n" +
-                "5 - query if an existing contact exists\n" +
-                "6 - to print a list of available actions.");
-        System.out.println("Choose your action");
-    }
+
+
+
+
+
+
+//        boolean quit = false;
+//        startPhone();
+//        printActions();
+//        while (quit) {
+//            System.out.println("\nEnter action: (6 to show available actions");
+//            int action = scanner.nextInt();
+//            scanner.nextLine();
+//
+//            switch (action) {
+//                case 0:
+//                    System.out.println("\n Shutting down...");
+//                    quit = true;
+//                    break;
+//
+//                case 1:
+//                    mobilePhone.printContacts();
+//                    break;
+//
+//                case 2:
+//                    addnewContact();
+//                    break;
+//
+//                case 3:
+//                    updateContact();
+//                    break;
+//
+//                case 4:
+//                    removeContact();
+//                    break;
+//
+//                case 5:
+//                    queryContact();
+//                    break;
+//
+//                case 6:
+//                    printActions();
+//                    break;
+//            }
+//
+//        }
+//    }
+//
+//    private static void addnewContact() {
+//        System.out.println("Enter new contact name: ");
+//        String name = scanner.nextLine();
+//        System.out.println("Ender phone number: ");
+//        String phone = scanner.nextLine();
+//        Contact newContact = Contact.createContact(name, phone);
+//        if (mobilePhone.addNewContact(newContact)) {
+//            System.out.println("New contact added: " + name + ", phone = " + phone);
+//        } else {
+//            System.out.println("Cannot add, " + name + " already on file");
+//        }
+//    }
+//
+//    private static void updateContact() {
+//        System.out.println("Enter existing contact name: ");
+//        String name = scanner.nextLine();
+//        Contact existingContactRecord = mobilePhone.queryContact(name);
+//        if(existingContactRecord == null) {
+//            System.out.println("Contact not found.");
+//            return;
+//        }
+//
+//        System.out.println("Enter new contact name: ");
+//        String newName = scanner.nextLine();
+//        System.out.println("Enter new contact phone number: ");
+//        String newNumber = scanner.nextLine();
+//        Contact newContact = Contact.createContact(newName,newNumber);
+//        if(mobilePhone.updateContact(existingContactRecord,newContact)) {
+//            System.out.println("Successfully updated record");
+//        } else {
+//            System.out.println("Error updating recoding");
+//        }
+//    }
+//
+//    private static void removeContact() {
+//        System.out.println("Enter existing contact name: ");
+//        String name = scanner.nextLine();
+//        Contact existingContactRecord = mobilePhone.queryContact(name);
+//        if (existingContactRecord == null) {
+//            System.out.println("Contact not found.");
+//            return;
+//        }
+//        if(mobilePhone.removeContact(existingContactRecord)) {
+//            System.out.println("Successfully deleted");
+//        } else {
+//            System.out.println("Error deleting contact");
+//        }
+//    }
+//
+//    private static void queryContact() {
+//        System.out.println("Enter existing contact name: ");
+//        String name = scanner.nextLine();
+//        Contact existingContactRecord = mobilePhone.queryContact(name);
+//        if (existingContactRecord == null) {
+//            System.out.println("Contact not found.");
+//            return;
+//        }
+//        System.out.println("Name: " + existingContactRecord.getName() + " phone number is " + existingContactRecord.getPhoneNumber());
+//    }
+//
+//    private static void printContacts() {
+//        mobilePhone.printContacts();
+//    }
+//
+//    private static void startPhone() {
+//        System.out.println("Starting phone...");
+//    }
+//
+//    private static void printActions() {
+//        System.out.println("\n Available actions: \npress");
+//        System.out.println("0 - to shutdown\n" +
+//                "1 - to print contacts\n" +
+//                "2 - to add a new contact\n" +
+//                "3 - to update existing an existing contact\n" +
+//                "4 - to remove an existing contact\n" +
+//                "5 - query if an existing contact exists\n" +
+//                "6 - to print a list of available actions.");
+//        System.out.println("Choose your action");
+//    }
 //        boolean quit = true;
 //        int choice = 0;
 //        printInstructions();
@@ -311,4 +371,5 @@ public class Main {
 //            System.out.println("Element " + i + " value is " + array[i]);
 //        }
 //    }
+    }
 }
