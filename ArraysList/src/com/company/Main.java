@@ -27,46 +27,74 @@ public class Main {
 //    private static GroceryList groceryList = new GroceryList();
 
     public static void main(String[] args) {
+//
+//        String[] strArray = new String[10];
+//        int[] intArray = new int[10];
+//
+//        ArrayList<String> strArrayList = new ArrayList<String>();
+//        strArrayList.add("Tim");
+//
+////        ArrayList<int> intArrayList = new ArrayList<int>();
+//        ArrayList<IntClass> intClassArrayList = new ArrayList<IntClass>();
+//        intClassArrayList.add(new IntClass(54));
+//        Integer integer = new Integer(54);
+//        Double doubleValue = new Double(12.125);
+//
+//        ArrayList<Integer> intArrrayList = new ArrayList<Integer>();
+//        for( int i=0; i<10; i++) {
+//            intArrrayList.add(Integer.valueOf(i));
+//        }
+//
+//        for( int i=0; i<10; i++) {
+//            System.out.println(i + " --> " + intArrrayList.get(i).intValue());
+//        }
+//
+//        Integer myIntValue = Integer.valueOf(56);
+//        int myInt = myIntValue.intValue();
+//
+//        ArrayList<Double> myDoubleValues = new ArrayList<Double>();
+//        for(double dbl=0.0; dbl<10.0; dbl += 0.5){
+//            myDoubleValues.add(Double.valueOf(dbl));
+//        }
+//
+//        for(int i=0; i<myDoubleValues.size(); i++) {
+//            double value = myDoubleValues.get(i).doubleValue();
+//            System.out.println(i + " --> " + value);
+//        }
 
-        String[] strArray = new String[10];
-        int[] intArray = new int[10];
+        Bank bank = new Bank("NB");
+        if(bank.addBranch("Adelaide")) {
+            System.out.println("Adelaide branch createdss");
+        };
+        bank.addCustomer("Adelaide", "Tim", 50.50);
+        bank.addCustomer("Adelaide", "Mike", 60.50);
+        bank.addCustomer("Adelaide", "Percy", 20.50);
 
-        ArrayList<String> strArrayList = new ArrayList<String>();
-        strArrayList.add("Tim");
+        bank.addBranch("Sydney");
+        bank.addCustomer("Sydney", "Bob", 105.54);
 
-//        ArrayList<int> intArrayList = new ArrayList<int>();
-        ArrayList<IntClass> intClassArrayList = new ArrayList<IntClass>();
-        intClassArrayList.add(new IntClass(54));
-        Integer integer = new Integer(54);
-        Double doubleValue = new Double(12.125);
+        bank.addCustomerTransaction("Adelaide", "Tim", 44.22);
+        bank.addCustomerTransaction("Adelaide", "Tim", 14.22);
+        bank.addCustomerTransaction("Adelaide", "Mike", 24.22);
 
-        ArrayList<Integer> intArrrayList = new ArrayList<Integer>();
-        for( int i=0; i<10; i++) {
-            intArrrayList.add(Integer.valueOf(i));
+        bank.listCustomers("Adelaide", true);
+        bank.listCustomers("Sydney", true);
+
+        if (!bank.addCustomer("Melbourne", "Brian", 53.34)) {
+            System.out.println("Melbourne branch does not exist");
         }
 
-        for( int i=0; i<10; i++) {
-            System.out.println(i + " --> " + intArrrayList.get(i).intValue());
+        if(!bank.addBranch("Adelaide")) {
+            System.out.println("Adelaide already exists");
         }
 
-        Integer myIntValue = Integer.valueOf(56);
-        int myInt = myIntValue.intValue();
-
-        ArrayList<Double> myDoubleValues = new ArrayList<Double>();
-        for(double dbl=0.0; dbl<10.0; dbl += 0.5){
-            myDoubleValues.add(Double.valueOf(dbl));
+        if(!bank.addCustomerTransaction("Adelaide","Fergus",25.55)) {
+            System.out.println("Customer does not exist at branch");
         }
 
-        for(int i=0; i<myDoubleValues.size(); i++) {
-            double value = myDoubleValues.get(i).doubleValue();
-            System.out.println(i + " --> " + value);
-        }
-
-
-
-
-
-
+        if(!bank.addCustomer("Adelaide","Tim",12.21)){ {
+            System.out.println("Customer already exists");
+        }}
 
 
 
