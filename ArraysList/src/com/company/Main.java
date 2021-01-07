@@ -63,9 +63,10 @@ public class Main {
 //        }
 
         Bank bank = new Bank("NB");
-        if(bank.addBranch("Adelaide")) {
+        if (bank.addBranch("Adelaide")) {
             System.out.println("Adelaide branch createdss");
-        };
+        }
+        ;
         bank.addCustomer("Adelaide", "Tim", 50.50);
         bank.addCustomer("Adelaide", "Mike", 60.50);
         bank.addCustomer("Adelaide", "Percy", 20.50);
@@ -84,18 +85,41 @@ public class Main {
             System.out.println("Melbourne branch does not exist");
         }
 
-        if(!bank.addBranch("Adelaide")) {
+        if (!bank.addBranch("Adelaide")) {
             System.out.println("Adelaide already exists");
         }
 
-        if(!bank.addCustomerTransaction("Adelaide","Fergus",25.55)) {
+        if (!bank.addCustomerTransaction("Adelaide", "Fergus", 25.55)) {
             System.out.println("Customer does not exist at branch");
         }
 
-        if(!bank.addCustomer("Adelaide","Tim",12.21)){ {
-            System.out.println("Customer already exists");
-        }}
+        if (!bank.addCustomer("Adelaide", "Tim", 12.21)) {
+            {
+                System.out.println("Customer already exists");
+            }
+        }
 
+        Customer2 customer2 = new Customer2("Tim", 54.96);
+        Customer2 anothercustomer2;
+        anothercustomer2 = customer2;
+        anothercustomer2.setBalance(12.18);
+        System.out.println("Balance for customer " + customer2.getName() + " is " + customer2.getBalance());
+
+        ArrayList<Integer> intList = new ArrayList<Integer>();
+
+        intList.add(1);
+        intList.add(1);
+        intList.add(1);
+
+        for (int i = 0; i < intList.size(); i++) {
+            System.out.println(i + " ; " + intList.get(i));
+        }
+
+        intList.add(1,2);
+
+        for (int i = 0; i < intList.size(); i++) {
+            System.out.println(i + " ; " + intList.get(i));
+        }
 
 
 
