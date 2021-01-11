@@ -1,8 +1,6 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 class IntClass {
     private int myValue;
@@ -25,9 +23,38 @@ public class Main {
     private static Scanner scanner = new Scanner(System.in);
     private static MobilePhone mobilePhone = new MobilePhone("12345");
 //    private static GroceryList groceryList = new GroceryList();
+    private static ArrayList<Album> albums = new ArrayList<Album>();
 
     public static void main(String[] args) {
-//
+
+        Album album = new Album("Stormbringer", "Deep Purple");
+        album.addSong("Storm bringer",4.6);
+        album.addSong("Storm  bringer",1.6);
+        album.addSong("Storm Bringer",2.6);
+        album.addSong("Holy man",3.6);
+        album.addSong("Hold on",5.6);
+        album.addSong("The gypsy",6.6);
+        album.addSong("Soldier of fortune",7.6);
+        albums.add(album);
+
+        album = new Album("For those about to rock","AC/DC");
+        album.addSong("For those about to rock",5.44);
+        album.addSong("Lets go",2.44);
+        album.addSong("Snowballed",3.44);
+        album.addSong("Evil walks",1.44);
+        albums.add(album);
+
+        LinkedList<Song> playList = new LinkedList<Song>();
+        albums.get(0).addToPlayList("You can't do right",playList);
+        albums.get(0).addToPlayList("Holy man",playList);
+        albums.get(0).addToPlayList("Speed king",playList);
+        albums.get(1).addToPlayList(6,playList);
+        albums.get(1).addToPlayList(5,playList);
+        albums.get(1).addToPlayList(2,playList);
+        albums.get(1).addToPlayList(24,playList);
+
+        play(playList);
+
 //        String[] strArray = new String[10];
 //        int[] intArray = new int[10];
 //
@@ -62,67 +89,64 @@ public class Main {
 //            System.out.println(i + " --> " + value);
 //        }
 
-        Bank bank = new Bank("NB");
-        if (bank.addBranch("Adelaide")) {
-            System.out.println("Adelaide branch createdss");
-        }
-        ;
-        bank.addCustomer("Adelaide", "Tim", 50.50);
-        bank.addCustomer("Adelaide", "Mike", 60.50);
-        bank.addCustomer("Adelaide", "Percy", 20.50);
-
-        bank.addBranch("Sydney");
-        bank.addCustomer("Sydney", "Bob", 105.54);
-
-        bank.addCustomerTransaction("Adelaide", "Tim", 44.22);
-        bank.addCustomerTransaction("Adelaide", "Tim", 14.22);
-        bank.addCustomerTransaction("Adelaide", "Mike", 24.22);
-
-        bank.listCustomers("Adelaide", true);
-        bank.listCustomers("Sydney", true);
-
-        if (!bank.addCustomer("Melbourne", "Brian", 53.34)) {
-            System.out.println("Melbourne branch does not exist");
-        }
-
-        if (!bank.addBranch("Adelaide")) {
-            System.out.println("Adelaide already exists");
-        }
-
-        if (!bank.addCustomerTransaction("Adelaide", "Fergus", 25.55)) {
-            System.out.println("Customer does not exist at branch");
-        }
-
-        if (!bank.addCustomer("Adelaide", "Tim", 12.21)) {
-            {
-                System.out.println("Customer already exists");
-            }
-        }
-
-        Customer2 customer2 = new Customer2("Tim", 54.96);
-        Customer2 anothercustomer2;
-        anothercustomer2 = customer2;
-        anothercustomer2.setBalance(12.18);
-        System.out.println("Balance for customer " + customer2.getName() + " is " + customer2.getBalance());
-
-        ArrayList<Integer> intList = new ArrayList<Integer>();
-
-        intList.add(1);
-        intList.add(1);
-        intList.add(1);
-
-        for (int i = 0; i < intList.size(); i++) {
-            System.out.println(i + " ; " + intList.get(i));
-        }
-
-        intList.add(1,2);
-
-        for (int i = 0; i < intList.size(); i++) {
-            System.out.println(i + " ; " + intList.get(i));
-        }
-
-
-
+//        Bank bank = new Bank("NB");
+//        if (bank.addBranch("Adelaide")) {
+//            System.out.println("Adelaide branch createdss");
+//        }
+//        ;
+//        bank.addCustomer("Adelaide", "Tim", 50.50);
+//        bank.addCustomer("Adelaide", "Mike", 60.50);
+//        bank.addCustomer("Adelaide", "Percy", 20.50);
+//
+//        bank.addBranch("Sydney");
+//        bank.addCustomer("Sydney", "Bob", 105.54);
+//
+//        bank.addCustomerTransaction("Adelaide", "Tim", 44.22);
+//        bank.addCustomerTransaction("Adelaide", "Tim", 14.22);
+//        bank.addCustomerTransaction("Adelaide", "Mike", 24.22);
+//
+//        bank.listCustomers("Adelaide", true);
+//        bank.listCustomers("Sydney", true);
+//
+//        if (!bank.addCustomer("Melbourne", "Brian", 53.34)) {
+//            System.out.println("Melbourne branch does not exist");
+//        }
+//
+//        if (!bank.addBranch("Adelaide")) {
+//            System.out.println("Adelaide already exists");
+//        }
+//
+//        if (!bank.addCustomerTransaction("Adelaide", "Fergus", 25.55)) {
+//            System.out.println("Customer does not exist at branch");
+//        }
+//
+//        if (!bank.addCustomer("Adelaide", "Tim", 12.21)) {
+//            {
+//                System.out.println("Customer already exists");
+//            }
+//        }
+//
+//        Customer2 customer2 = new Customer2("Tim", 54.96);
+//        Customer2 anothercustomer2;
+//        anothercustomer2 = customer2;
+//        anothercustomer2.setBalance(12.18);
+//        System.out.println("Balance for customer " + customer2.getName() + " is " + customer2.getBalance());
+//
+//        ArrayList<Integer> intList = new ArrayList<Integer>();
+//
+//        intList.add(1);
+//        intList.add(1);
+//        intList.add(1);
+//
+//        for (int i = 0; i < intList.size(); i++) {
+//            System.out.println(i + " ; " + intList.get(i));
+//        }
+//
+//        intList.add(1,2);
+//
+//        for (int i = 0; i < intList.size(); i++) {
+//            System.out.println(i + " ; " + intList.get(i));
+//        }
 //        boolean quit = false;
 //        startPhone();
 //        printActions();
@@ -423,5 +447,33 @@ public class Main {
 //            System.out.println("Element " + i + " value is " + array[i]);
 //        }
 //    }
+    }
+
+    private static void play(LinkedList<Song> playList) {
+        Scanner scanner = new Scanner(System.in);
+        boolean quit = false;
+        boolean forward = true;
+        ListIterator<Song> listIterator = playList.listIterator();
+        if(playList.size() == 0) {
+            System.out.println("No song in playlist");
+            return;
+        } else {
+            System.out.println("Now playing " + listIterator.next().toString());
+        }
+
+        while (!quit) {
+            int action = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (action) {
+                case 0:
+                    System.out.println("PlayList complete.");
+                    quit = true;
+                    break;
+                case 1:
+                    break;
+
+            }
+        }
     }
 }
